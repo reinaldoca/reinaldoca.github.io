@@ -421,8 +421,6 @@ main, .footer { position: relative; z-index: 2; }
     0 0 0 1px rgba(139, 92, 246, 0.12),
     0 30px 80px -20px rgba(37, 99, 235, 0.45);
   animation: none;
-  transform-style: preserve-3d;
-  transition: transform 0.4s var(--ease-out);
 }
 
 .hero .video-frame-top,
@@ -661,23 +659,6 @@ main, .footer { position: relative; z-index: 2; }
 .project-card,
 .contact-card { overflow: hidden; isolation: isolate; }
 
-/* Luz que sigue al mouse (modern.js setea --mx / --my) */
-.service-card::after,
-.stack-category::after,
-.container-block::after,
-.project-card::after,
-.contact-card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  border-radius: inherit;
-  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), rgba(59, 130, 246, 0.13), transparent 45%);
-  opacity: 0;
-  transition: opacity 0.35s ease;
-  pointer-events: none;
-}
-
 .service-card:hover,
 .stack-category:hover,
 .container-block:hover,
@@ -689,12 +670,6 @@ main, .footer { position: relative; z-index: 2; }
     0 0 0 1px rgba(139, 92, 246, 0.12),
     0 24px 50px -20px rgba(37, 99, 235, 0.45);
 }
-
-.service-card:hover::after,
-.stack-category:hover::after,
-.container-block:hover::after,
-.project-card:hover::after,
-.contact-card:hover::after { opacity: 1; }
 
 /* Iconos con caja gradiente */
 .service-card .card-icon,

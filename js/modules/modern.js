@@ -1,8 +1,6 @@
 /* =============================================
    MODERN EFFECTS
    - Última palabra de cada título en gradiente
-   - Luz que sigue al mouse dentro de las tarjetas
-   - Tilt 3D suave en el video del hero
    - Barra de progreso de scroll
    - Reveal escalonado del hero
    ============================================= */
@@ -32,39 +30,6 @@ function highlightTitles() {
     apply(lang);
     highlightTitles();
   };
-})();
-
-/* ---- Spotlight dentro de las tarjetas ---- */
-(function initCardLight() {
-  const cards = document.querySelectorAll(
-    '.service-card, .stack-category, .container-block, .project-card, .contact-card'
-  );
-  cards.forEach(card => {
-    card.addEventListener('pointermove', (e) => {
-      const r = card.getBoundingClientRect();
-      card.style.setProperty('--mx', `${e.clientX - r.left}px`);
-      card.style.setProperty('--my', `${e.clientY - r.top}px`);
-    });
-  });
-})();
-
-/* ---- Tilt 3D del video ---- */
-(function initHeroTilt() {
-  const box = document.querySelector('.hero .video-container');
-  if (!box || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if (window.matchMedia('(hover: none)').matches) return;
-
-  box.parentElement.style.perspective = '1200px';
-
-  box.addEventListener('pointermove', (e) => {
-    const r = box.getBoundingClientRect();
-    const x = (e.clientX - r.left) / r.width  - 0.5;
-    const y = (e.clientY - r.top)  / r.height - 0.5;
-    box.style.transform = `rotateY(${x * 8}deg) rotateX(${-y * 8}deg)`;
-  });
-  box.addEventListener('pointerleave', () => {
-    box.style.transform = '';
-  });
 })();
 
 /* ---- Barra de progreso de scroll ---- */

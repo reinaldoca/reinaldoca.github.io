@@ -4,151 +4,13 @@
 
 'use strict';
 
-/* ---- Cursor personalizado ---- */
-(function initCursor() {
-  const cursor   = document.getElementById('cursor');
-  const follower = document.getElementById('cursor-follower');
-  if (!cursor || !follower) return;
-
-  /* Verificar si es desktop (no móvil) */
-  const isMobile = window.matchMedia('(max-width: 768px)').matches;
-  if (isMobile) {
-    cursor.style.display = 'none';
-    follower.style.display = 'none';
-    return;
-  }
-
-  let mouseX = 0, mouseY = 0;
-  let followerX = 0, followerY = 0;
-
-  /* Mostrar cursores inmediatamente */
-  cursor.style.opacity = '0.7';
-  follower.style.opacity = '0.4';
-
-  /* Usar transform en lugar de left/top — GPU accelerated, sin reflow */
-  cursor.style.cssText   += '; will-change: transform;';
-  follower.style.cssText += '; will-change: transform;';
-
-  document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    /* Cursor principal: instantáneo, sin lag */
-    cursor.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
-    cursor.style.opacity = '1';
-    follower.style.opacity = '0.5';
-  }, { passive: true });
-
-  /* Follower: suave pero responsivo — lerp 0.45 */
-  function animateFollower() {
-    followerX += (mouseX - followerX) * 0.45;
-    followerY += (mouseY - followerY) * 0.45;
-    follower.style.transform = `translate(${followerX}px, ${followerY}px) translate(-50%, -50%)`;
-    requestAnimationFrame(animateFollower);
-  }
-  animateFollower();
-
-  /* Ocultar cursores al salir de la ventana */
-  document.addEventListener('mouseleave', () => {
-    cursor.style.opacity   = '0';
-    follower.style.opacity = '0';
-  });
-  document.addEventListener('mouseenter', () => {
-    cursor.style.opacity   = '1';
-    follower.style.opacity = '0.5';
-  });
-
-  const hoverEls = document.querySelectorAll('a, button, .service-card, .contact-card, .stat-card, .extra-card, .stack-category');
-  hoverEls.forEach(el => {
-    el.addEventListener('mouseenter', () => { cursor.classList.add('active'); follower.classList.add('active'); });
-    el.addEventListener('mouseleave', () => { cursor.classList.remove('active'); follower.classList.remove('active'); });
-  });
-})();
-
-/* ---- Cursor Trail Effect ---- */
-(function initCursorTrail() {
-  const canvas = document.getElementById('particles-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-
-  const trail = [];
-  const MAX_TRAIL = 15;
-  let mouseX = 0, mouseY = 0;
-
-  /* Colores según sección */
-  const sectionColors = {
-    'hero': '#63b3ed',
-    'servicios': '#4fd1c5',
-    'stack': '#a78bfa',
-    'containers': '#f6ad55',
-    'about': '#68d391',
-    'contacto': '#fc8181'
-  };
-
-  function getCurrentSectionColor() {
-    const sections = document.querySelectorAll('section[id]');
-    const scrollPos = window.scrollY + window.innerHeight / 2;
-
-    for (const section of sections) {
-      const rect = section.getBoundingClientRect();
-      const sectionTop = rect.top + window.scrollY;
-      const sectionBottom = sectionTop + rect.height;
-
-      if (scrollPos >= sectionTop && scrollPos <= sectionBottom) {
-        return sectionColors[section.id] || '#63b3ed';
-      }
-    }
-    return '#63b3ed';
-  }
-
-  document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-
-    /* Agregar nueva partícula al trail */
-    trail.push({
-      x: mouseX,
-      y: mouseY,
-      life: 1.0,
-      color: getCurrentSectionColor(),
-      size: 4
-    });
-
-    if (trail.length > MAX_TRAIL) trail.shift();
-  }, { passive: true });
-
-  /* Render trail (integrado en el loop de particles) */
-  window.renderCursorTrail = function() {
-    trail.forEach((particle, index) => {
-      particle.life -= 0.06;
-      particle.size *= 0.96;
-
-      if (particle.life > 0) {
-        ctx.save();
-        ctx.globalAlpha = particle.life * 0.6;
-        ctx.fillStyle = particle.color;
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.restore();
-      }
-    });
-
-    /* Remover partículas muertas */
-    for (let i = trail.length - 1; i >= 0; i--) {
-      if (trail[i].life <= 0) {
-        trail.splice(i, 1);
-      }
-    }
-  };
-})();
-
 /* ---- Canvas Particles ---- */
 (function initParticles() {
   const canvas = document.getElementById('particles-canvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
 
-  let W, H, particles = [], mouse = { x: null, y: null };
+  let W, H, particles = [];
 
   function resize() {
     W = canvas.width  = window.innerWidth;
@@ -156,11 +18,6 @@
   }
   resize();
   window.addEventListener('resize', () => { resize(); buildParticles(); });
-
-  document.addEventListener('mousemove', e => {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-  });
 
   class Particle {
     constructor() { this.reset(true); }
@@ -199,18 +56,6 @@
       this.x += this.vx * this.z;
       this.y += this.vy * this.z;
       this.life++;
-
-      /* Mouse interaction: repulsión O atracción */
-      if (mouse.x !== null) {
-        const dx = this.x - mouse.x;
-        const dy = this.y - mouse.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 120) {
-          const force = this.attractMode ? -0.05 : 0.06;
-          this.vx += dx / dist * force;
-          this.vy += dy / dist * force;
-        }
-      }
 
       /* Transición de color suave */
       this.colorProgress += 0.008;
@@ -323,11 +168,6 @@
 
   function loop() {
     ctx.clearRect(0, 0, W, H);
-
-    /* Render cursor trail first (behind particles) */
-    if (typeof window.renderCursorTrail === 'function') {
-      window.renderCursorTrail();
-    }
 
     particles.forEach(p => { p.update(); p.draw(); });
     drawConnections();
@@ -506,47 +346,6 @@ function countUpAll() {
 
   window.addEventListener('scroll', setActive, { passive: true });
   setActive();
-})();
-
-/* ---- Card tilt effect ---- */
-(function initTilt() {
-  const cards = document.querySelectorAll('.service-card, .contact-card');
-  const MAX_TILT = 14;
-
-  cards.forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const rect   = card.getBoundingClientRect();
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top  + rect.height / 2;
-      const deltaX  = (e.clientX - centerX) / (rect.width / 2);
-      const deltaY  = (e.clientY - centerY) / (rect.height / 2);
-
-      /* Inner shadow dinámico que sigue al mouse */
-      const shadowX = -deltaX * 10;
-      const shadowY = -deltaY * 10;
-
-      card.style.transform = `
-        translateY(-8px)
-        perspective(1000px)
-        rotateY(${deltaX * MAX_TILT}deg)
-        rotateX(${-deltaY * MAX_TILT}deg)
-      `;
-      card.style.boxShadow = `
-        0 24px 64px rgba(0,0,0,0.5),
-        0 0 0 1px rgba(99,179,237,0.1),
-        0 0 80px rgba(99,179,237,0.25),
-        inset ${shadowX}px ${shadowY}px 30px rgba(0,0,0,0.3),
-        inset 0 1px 0 rgba(255,255,255,0.1)
-      `;
-    });
-
-    card.addEventListener('mouseleave', () => {
-      card.style.transition = 'transform 0.5s cubic-bezier(0.4,0,0.2,1), border-color 0.3s, box-shadow 0.5s cubic-bezier(0.4,0,0.2,1)';
-      card.style.transform = '';
-      card.style.boxShadow = '';
-      setTimeout(() => { card.style.transition = ''; }, 500);
-    });
-  });
 })();
 
 /* ---- Smooth scroll for anchor links ---- */

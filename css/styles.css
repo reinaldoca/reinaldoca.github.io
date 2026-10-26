@@ -68,50 +68,6 @@ body {
 }
 
 /* =============================================
-   CUSTOM CURSOR
-   ============================================= */
-.cursor {
-  position: fixed;
-  top: 0; left: 0;          /* origen fijo — el movimiento va en transform */
-  width: 10px;
-  height: 10px;
-  background: var(--accent);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0;               /* oculto hasta el primer mousemove */
-  /* SIN transition en transform para que sea 100% instantáneo */
-  transition: width 0.2s, height 0.2s, background 0.2s, opacity 0.2s;
-  will-change: transform;
-  box-shadow: 0 0 10px rgba(99, 179, 237, 0.5);
-}
-
-.cursor-follower {
-  position: fixed;
-  top: 0; left: 0;          /* origen fijo — el movimiento va en transform */
-  width: 36px;
-  height: 36px;
-  border: 1.5px solid var(--accent);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9998;
-  opacity: 0;               /* oculto hasta el primer mousemove */
-  transition: width 0.2s, height 0.2s, opacity 0.2s;
-  will-change: transform;
-}
-
-.cursor.active {
-  width: 16px;
-  height: 16px;
-  background: var(--accent-2);
-}
-.cursor-follower.active {
-  width: 56px;
-  height: 56px;
-  opacity: 0.15 !important;
-}
-
-/* =============================================
    CANVAS PARTICLES
    ============================================= */
 #particles-canvas {
