@@ -12,8 +12,19 @@
       property="og:description"
       content="Diseño y opero infraestructura cloud en AWS con foco en automatización, Kubernetes, CI/CD y confiabilidad."
     />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://reinaldoca.github.io" />
+    <meta property="og:image" content="https://reinaldoca.github.io/assets/images/profile.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Reinaldo Cancino Allen — DevOps &amp; Cloud Engineer AWS" />
+    <meta name="twitter:description" content="Diseño y opero infraestructura cloud en AWS con foco en automatización, Kubernetes, CI/CD y confiabilidad." />
+    <meta name="twitter:image" content="https://reinaldoca.github.io/assets/images/profile.png" />
+    <meta name="theme-color" content="#020617" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>" />
     <title>Reinaldo Cancino Allen — DevOps &amp; Cloud Engineer AWS</title>
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/effects.css" />
+    <link rel="stylesheet" href="css/modern.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -22,6 +33,9 @@
     />
   </head>
   <body>
+    <!-- Skip to content -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- Fondo de partículas -->
     <canvas id="particles-canvas"></canvas>
 
@@ -55,8 +69,13 @@
             >
           </li>
           <li>
+            <a href="#projects" class="nav-link"
+              ><span class="link-num">04.</span><span data-i18n="nav.projects">Proyectos</span></a
+            >
+          </li>
+          <li>
             <a href="#about" class="nav-link"
-              ><span class="link-num">04.</span><span data-i18n="nav.about">Sobre mí</span></a
+              ><span class="link-num">05.</span><span data-i18n="nav.about">Sobre mí</span></a
             >
           </li>
           <li>
@@ -74,49 +93,129 @@
       </div>
     </nav>
 
-    <main>
+    <main id="main-content">
       <!-- ===== HERO ===== -->
       <section class="hero" id="hero">
-        <div class="hero-bg-grid"></div>
+        <!-- Hero Background Effects -->
+        <div class="hero-background">
+          <div class="hero-bg-grid"></div>
+          <div class="glow glow-blue"></div>
+          <div class="glow glow-purple"></div>
+        </div>
+
         <div class="hero-content">
-          <div class="terminal-window">
-            <div class="terminal-bar">
-              <span class="t-btn t-red"></span>
-              <span class="t-btn t-yellow"></span>
-              <span class="t-btn t-green"></span>
-              <span class="t-title">reinaldo@aws-prod:~</span>
+          <!-- Columna de texto -->
+          <div class="hero-text">
+            <span class="hero-status">
+              <span class="hero-status-dot"></span>
+              <span data-i18n="hero.status">Disponible para proyectos DevOps</span>
+            </span>
+
+            <p class="hero-hi" data-i18n="hero.hi">Hola, soy</p>
+            <h1 class="hero-name">
+              Reinaldo <span class="hero-name-accent">Cancino Allen</span>
+            </h1>
+            <p class="hero-role">
+              <span>DevOps &amp; Cloud Engineer</span>
+              <span class="hero-role-sep">|</span>
+              <span data-i18n="hero.role2">Infraestructura AWS como código</span>
+            </p>
+            <p class="hero-desc" data-i18n-html="hero.desc">
+              Diseño, automatizo y opero infraestructura cloud en AWS.<br>
+              Docker, Kubernetes, IaC, CI/CD y observabilidad — de principio a fin.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#servicios" class="btn btn-primary">
+                <span data-i18n="hero.btn.primary">Ver servicios</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a href="#projects" class="btn btn-ghost">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18M3 12h18M3 17h12"/></svg>
+                <span data-i18n="nav.projects">Proyectos</span>
+              </a>
+              <a href="#contacto" class="btn btn-ghost">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg>
+                <span data-i18n="hero.btn.ghost">Trabajemos juntos</span>
+              </a>
             </div>
-            <div class="terminal-body">
-              <div class="t-line">
-                <span class="t-prompt">❯</span>
-                <span class="t-cmd" id="typed-cmd"></span
-                ><span class="t-blink">▋</span>
-              </div>
-              <div class="t-output" id="t-output" style="display: none">
-                <p class="t-name glitch" data-text="Reinaldo Cancino Allen">
-                              Reinaldo Cancino Allen
-                            </p>
-                <p class="t-role">DevOps <span class="divider">/</span> Cloud Engineer <span class="badge-aws">AWS</span></p>
-                <p class="t-desc" data-i18n-html="hero.desc">
-                  Diseño, automatizo y opero infraestructura cloud en AWS.<br>
-                  Docker, Kubernetes, IaC, CI/CD y observabilidad — de principio a fin.
-                </p>
-                <div class="t-badges">
-                  <span class="badge">AWS</span>
-                  <span class="badge">Docker</span>
-                  <span class="badge">Kubernetes</span>
-                  <span class="badge">Terraform</span>
-                  <span class="badge">CI/CD</span>
-                  <span class="badge">GitOps</span>
+
+            <div class="hero-social">
+              <span class="hero-social-label" data-i18n="hero.findme">Encontrame en</span>
+              <a href="https://www.linkedin.com/in/reinaldo-cancino-allen/" target="_blank" rel="noopener" class="social-btn" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              </a>
+              <a href="https://github.com/reinaldoca" target="_blank" rel="noopener" class="social-btn" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              </a>
+              <a href="mailto:reinaldo_cancino@hotmail.com" class="social-btn" aria-label="Email">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </a>
+            </div>
+
+            <div class="hero-chips">
+              <span class="chip">AWS</span>
+              <span class="chip">Docker</span>
+              <span class="chip">Kubernetes</span>
+              <span class="chip">Terraform</span>
+              <span class="chip">CI/CD</span>
+              <span class="chip">GitOps</span>
+            </div>
+          </div>
+
+          <!-- Columna visual: video -->
+          <div class="hero-visual">
+            <div class="video-container">
+              <div class="video-frame-top">
+                <div class="window-controls">
+                  <span class="dot dot-red"></span>
+                  <span class="dot dot-yellow"></span>
+                  <span class="dot dot-green"></span>
                 </div>
-                <div class="t-actions">
-                  <a href="#servicios" class="btn btn-primary">
-                    <span data-i18n="hero.btn.primary">Ver servicios</span>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                  </a>
-                  <a href="#contacto" class="btn btn-ghost" data-i18n="hero.btn.ghost">Trabajemos juntos</a>
+                <div class="terminal-prompt">
+                  <span class="prompt-icon">&gt;_</span>
+                  <span class="prompt-text">reinaldo@aws-prod</span><span class="prompt-symbol">:~</span>
+                </div>
+                <div class="live-indicator">
+                  <span class="live-dot"></span>
+                  <span class="live-text">LIVE</span>
                 </div>
               </div>
+
+              <div class="video-wrapper">
+                <video
+                  class="hero-video"
+                  src="assets/videos/devops-globe.mp4"
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  preload="auto"
+                ></video>
+                <div class="video-overlay"></div>
+              </div>
+
+              <div class="video-frame-bottom">
+                <div class="frame-info">
+                  <span class="frame-label">DEVOPS</span>
+                  <span class="frame-sub">Build · Deploy · Monitor</span>
+                </div>
+                <span class="infinity-symbol">∞</span>
+              </div>
+            </div>
+
+            <!-- Etiquetas flotantes -->
+            <div class="hero-float hero-float--code">
+              <span class="hero-float-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              </span>
+              <span class="hero-float-text"><strong>CODE</strong><small data-i18n="hero.code">Infra como código</small></span>
+            </div>
+            <div class="hero-float hero-float--monitor">
+              <span class="hero-float-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              </span>
+              <span class="hero-float-text"><strong>MONITOR</strong><small data-i18n="hero.monitor">Observabilidad 24/7</small></span>
             </div>
           </div>
         </div>
@@ -438,6 +537,51 @@
         </div>
       </section>
 
+      <!-- ===== TECH MARQUEE ===== -->
+      <div class="tech-marquee-wrapper">
+        <div class="tech-marquee">
+          <div class="marquee-content" aria-hidden="true">
+            <span class="marquee-item">AWS</span>
+            <span class="marquee-item">Docker</span>
+            <span class="marquee-item">Kubernetes</span>
+            <span class="marquee-item">Terraform</span>
+            <span class="marquee-item">Prometheus</span>
+            <span class="marquee-item">Grafana</span>
+            <span class="marquee-item">Argo CD</span>
+            <span class="marquee-item">GitLab CI</span>
+            <span class="marquee-item">GitHub Actions</span>
+            <span class="marquee-item">Jenkins</span>
+            <span class="marquee-item">Ansible</span>
+            <span class="marquee-item">Python</span>
+            <span class="marquee-item">PostgreSQL</span>
+            <span class="marquee-item">Redis</span>
+            <span class="marquee-item">Nginx</span>
+            <span class="marquee-item">EKS</span>
+            <span class="marquee-item">Lambda</span>
+            <span class="marquee-item">CloudWatch</span>
+            <!-- Duplicate for seamless loop -->
+            <span class="marquee-item">AWS</span>
+            <span class="marquee-item">Docker</span>
+            <span class="marquee-item">Kubernetes</span>
+            <span class="marquee-item">Terraform</span>
+            <span class="marquee-item">Prometheus</span>
+            <span class="marquee-item">Grafana</span>
+            <span class="marquee-item">Argo CD</span>
+            <span class="marquee-item">GitLab CI</span>
+            <span class="marquee-item">GitHub Actions</span>
+            <span class="marquee-item">Jenkins</span>
+            <span class="marquee-item">Ansible</span>
+            <span class="marquee-item">Python</span>
+            <span class="marquee-item">PostgreSQL</span>
+            <span class="marquee-item">Redis</span>
+            <span class="marquee-item">Nginx</span>
+            <span class="marquee-item">EKS</span>
+            <span class="marquee-item">Lambda</span>
+            <span class="marquee-item">CloudWatch</span>
+          </div>
+        </div>
+      </div>
+
       <!-- ===== CONTAINERS DEEP DIVE ===== -->
       <section class="section containers" id="containers">
         <div class="section-inner">
@@ -545,6 +689,199 @@
         </div>
       </section>
 
+      <!-- ===== PROJECTS SHOWCASE ===== -->
+      <section class="section projects" id="projects">
+        <div class="section-inner">
+          <div class="section-header">
+            <span class="section-tag">$ tree ./projects</span>
+            <h2 class="section-title">Proyectos Destacados</h2>
+            <p class="section-subtitle">
+              Casos reales de infraestructura cloud, automatización y DevOps en producción
+            </p>
+          </div>
+
+          <div class="project-filters">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="aws">AWS</button>
+            <button class="filter-btn" data-filter="k8s">Kubernetes</button>
+            <button class="filter-btn" data-filter="terraform">Terraform</button>
+            <button class="filter-btn" data-filter="cicd">CI/CD</button>
+          </div>
+
+          <div class="projects-grid">
+            <!-- Project 1: EKS Cluster -->
+            <article class="project-card" data-category="aws k8s terraform" data-aos="fade-up">
+              <div class="project-image">
+                <div class="project-placeholder">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                    <line x1="12" y1="22.08" x2="12" y2="12"/>
+                  </svg>
+                </div>
+                <div class="project-overlay">
+                  <span class="project-status">Producción</span>
+                </div>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">EKS Production Cluster</h3>
+                <p class="project-desc">
+                  Cluster Kubernetes multi-AZ en AWS con autoscaling horizontal y vertical,
+                  despliegue GitOps con Argo CD y observabilidad completa con Prometheus y Grafana.
+                </p>
+                <div class="project-tech">
+                  <span>EKS</span>
+                  <span>Terraform</span>
+                  <span>Argo CD</span>
+                  <span>Karpenter</span>
+                </div>
+                <div class="project-stats">
+                  <div class="stat">
+                    <span class="stat-value">99.97%</span>
+                    <span class="stat-label">Uptime</span>
+                  </div>
+                  <div class="stat">
+                    <span class="stat-value">-35%</span>
+                    <span class="stat-label">Costo</span>
+                  </div>
+                  <div class="stat">
+                    <span class="stat-value">40+</span>
+                    <span class="stat-label">Deploys/día</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 2: IaC Pipeline -->
+            <article class="project-card" data-category="terraform cicd aws" data-aos="fade-up" data-aos-delay="100">
+              <div class="project-image">
+                <div class="project-placeholder">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="16" y1="13" x2="8" y2="13"/>
+                    <line x1="16" y1="17" x2="8" y2="17"/>
+                  </svg>
+                </div>
+                <div class="project-overlay">
+                  <span class="project-status">Activo</span>
+                </div>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Pipeline IaC Multi-Cuenta</h3>
+                <p class="project-desc">
+                  Pipeline CI/CD para Terraform que provisiona infraestructura across múltiples cuentas AWS
+                  con drift detection automático, plan previews en PRs y rollback capability.
+                </p>
+                <div class="project-tech">
+                  <span>Terraform</span>
+                  <span>GitLab CI</span>
+                  <span>Terragrunt</span>
+                  <span>AWS</span>
+                </div>
+                <div class="project-stats">
+                  <div class="stat">
+                    <span class="stat-value">15</span>
+                    <span class="stat-label">Cuentas</span>
+                  </div>
+                  <div class="stat">
+                    <span class="stat-value">200+</span>
+                    <span class="stat-label">Recursos</span>
+                  </div>
+                  <div class="stat">
+                    <span class="stat-value">100%</span>
+                    <span class="stat-label">Como código</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 3: Monitoring Stack -->
+            <article class="project-card" data-category="k8s cicd" data-aos="fade-up" data-aos-delay="200">
+              <div class="project-image">
+                <div class="project-placeholder">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                  </svg>
+                </div>
+                <div class="project-overlay">
+                  <span class="project-status">Producción</span>
+                </div>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Observability Stack</h3>
+                <p class="project-desc">
+                  Stack completo de monitoreo con Prometheus, Grafana, Loki y Alertmanager.
+                  Dashboards custom, alertas inteligentes y trazabilidad distribuida con OpenTelemetry.
+                </p>
+                <div class="project-tech">
+                  <span>Prometheus</span>
+                  <span>Grafana</span>
+                  <span>Loki</span>
+                  <span>OpenTelemetry</span>
+                </div>
+                <div class="project-stats">
+                  <div class="stat">
+                    <span class="stat-value">50M+</span>
+                    <span class="stat-label">Métricas/día</span>
+                  </div>
+                  <div class="stat">
+                    <span class="stat-value">30</span>
+                    <span class="stat-label">Dashboards</span>
+                  </div>
+                  <div class="stat">
+                    <span class="stat-value">< 2min</span>
+                    <span class="stat-label">MTTD</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 4: GitOps Platform -->
+            <article class="project-card" data-category="k8s cicd" data-aos="fade-up" data-aos-delay="300">
+              <div class="project-image">
+                <div class="project-placeholder">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                  </svg>
+                </div>
+                <div class="project-overlay">
+                  <span class="project-status">Producción</span>
+                </div>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">GitOps Platform con Argo CD</h3>
+                <p class="project-desc">
+                  Plataforma GitOps end-to-end con Argo CD, Argo Rollouts para canary deployments,
+                  Argo Events para automatizaciones y disaster recovery completo.
+                </p>
+                <div class="project-tech">
+                  <span>Argo CD</span>
+                  <span>Argo Rollouts</span>
+                  <span>Helm</span>
+                  <span>Kubernetes</span>
+                </div>
+                <div class="project-stats">
+                  <div class="stat">
+                    <span class="stat-value">120+</span>
+                    <span class="stat-label">Apps</span>
+                  </div>
+                  <div class="stat">
+                    <span class="stat-value">0</span>
+                    <span class="stat-label">Downtime</span>
+                  </div>
+                  <div class="stat">
+                    <span class="stat-value">< 5min</span>
+                    <span class="stat-label">Rollback</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <!-- ===== ABOUT ===== -->
       <section class="section about" id="about">
         <div class="section-inner">
@@ -643,7 +980,7 @@
     <footer class="footer">
       <div class="footer-inner">
         <span class="footer-logo">rcancino<span class="prompt">~</span></span>
-        <span class="footer-copy">© 2025 Reinaldo Cancino Allen · <span data-i18n="footer.made">Hecho con</span> ☕ y demasiados <code data-i18n="footer.cmd">aws cli</code></span>
+        <span class="footer-copy">© 2026 Reinaldo Cancino Allen · <span data-i18n="footer.made">Hecho con</span> ☕ y demasiados <code data-i18n="footer.cmd">aws cli</code></span>
         <div class="footer-links">
           <a href="mailto:reinaldo_cancino@hotmail.com">Email</a>
           <a href="https://www.linkedin.com/in/reinaldo-cancino-allen/" target="_blank" rel="noopener">LinkedIn</a>
@@ -653,5 +990,14 @@
 
     <script src="js/i18n.js"></script>
     <script src="js/main.js"></script>
+
+    <!-- Nuevos módulos de efectos -->
+    <script src="js/modules/magnetic.js"></script>
+    <script src="js/modules/spotlight.js"></script>
+    <script src="js/modules/blobs.js"></script>
+    <script src="js/modules/projects.js"></script>
+    <script src="js/modules/theme.js"></script>
+    <script src="js/modules/backtotop.js"></script>
+    <script src="js/modules/modern.js"></script>
   </body>
 </html>

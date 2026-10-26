@@ -20,12 +20,19 @@ const translations = {
     'nav.stack':      'Stack',
     'nav.containers': 'Containers',
     'nav.about':      'Sobre mí',
+    'nav.projects':   'Proyectos',
     'nav.contact':    'Contacto',
 
     /* Hero */
     'hero.desc':       'Diseño, automatizo y opero infraestructura cloud en AWS.<br>Docker, Kubernetes, IaC, CI/CD y observabilidad — de principio a fin.',
     'hero.btn.primary':'Ver servicios',
     'hero.btn.ghost':  'Trabajemos juntos',
+    'hero.status':     'Disponible para proyectos DevOps',
+    'hero.hi':         'Hola, soy',
+    'hero.role2':      'Infraestructura AWS como código',
+    'hero.findme':     'Encontrame en',
+    'hero.code':       'Infra como código',
+    'hero.monitor':    'Observabilidad 24/7',
 
     /* Stats */
     'stat.uptime': 'Uptime en producción',
@@ -125,12 +132,19 @@ const translations = {
     'nav.stack':      'Stack',
     'nav.containers': 'Containers',
     'nav.about':      'About',
+    'nav.projects':   'Projects',
     'nav.contact':    'Contact',
 
     /* Hero */
     'hero.desc':       'I design, automate and operate cloud infrastructure on AWS.<br>Docker, Kubernetes, IaC, CI/CD and observability — end to end.',
     'hero.btn.primary':'View services',
     'hero.btn.ghost':  "Let's work together",
+    'hero.status':     'Available for DevOps projects',
+    'hero.hi':         "Hi, I'm",
+    'hero.role2':      'AWS infrastructure as code',
+    'hero.findme':     'Find me on',
+    'hero.code':       'Infrastructure as code',
+    'hero.monitor':    '24/7 observability',
 
     /* Stats */
     'stat.uptime': 'Uptime in production',
